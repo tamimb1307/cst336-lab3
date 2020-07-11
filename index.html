@@ -16,7 +16,7 @@
                     &emsp;&emsp;&emsp;&nbsp;&nbsp;
 					<input type="radio" name="gender" value="f"> Female<br> 
 
-        Zip Code:  <input type="text" name="zip" id="zip"><br>
+        Zip Code:  <input type="text" name="zip" id="zip"><span id="zipr"></span><br>
         City:      <span id="city"></span><br>
         Latitude:  <span id="lat"></span><br>
         Longitude: <span id="long"></span><br><br>
@@ -57,10 +57,16 @@
              success: function(result,status) {
                   
                   //alert(result.city);
-                  $("#city").html(result.city);
+				  if(!result.length) {
+				   $("#zipr").html("No city found!");
+				   
+				}
+				else
+                      {
+                $("#city").html(result.city);
 				  $("#lat").html(result.latitude);
 				  $("#long").html(result.longitude);
-                
+                }
                 }
                 
             });//ajax
