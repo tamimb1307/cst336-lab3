@@ -3,7 +3,7 @@
     <head>
         <title> Sign Up Page </title>
 		<link rel="stylesheet" type="text/css" href="mystyle.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+        <script src="jquery-3.5.1.min.js"></script>
     </head>
     <body>
         
@@ -57,17 +57,22 @@
              success: function(result,status) {
                   
                   //alert(result.city);
-				  if(!result.city) {
-				   $("#zipr").html("No city found! Try again to populate.");
-				   
-				}
-				else
-                      {
+				 
+		
                 $("#city").html(result.city);
 				  $("#lat").html(result.latitude);
 				  $("#long").html(result.longitude);
-                }
-                }
+				  $("#zipr").html("");
+				 
+             
+                },
+				
+		error: function() {
+             $("#zipr").html("No city found!");
+			                $("#city").html("");
+				  $("#lat").html("");
+				  $("#long").html("");
+        }
                 
             });//ajax
         });//zip
